@@ -136,7 +136,7 @@ def q15
   # 以下に回答を記載
   p data1.key?(:age) ? "OK" : "NG"
   p data2.key?(:age) ? "OK" : "NG"
-  p data1.keys
+  # p data1.keys
 end
 
 def q16
