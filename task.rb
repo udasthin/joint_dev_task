@@ -212,7 +212,14 @@ end
 
 class Item
   # 以下を修正して下さい
+  attr_accessor :name
+  def initialize(name:)
+    self.name = name
+  end
 
+    def book
+      puts self.name
+    end
 end
 
 def q19
