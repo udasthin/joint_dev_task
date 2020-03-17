@@ -156,19 +156,17 @@ end
 
 class UserQ17
   # 以下に回答を記載
-  attr_accessor :name, :age, :gender, :admin
   def initialize(name:, age:,  gender:, admin:)   
-    self.name = name
-    self.age = age
-    self.gender = gender
-    self.admin = admin
-    # self.admin ? "あり" : "なし"
+    @name = name
+    @age = age
+    @gender = gender
+    @admin = admin
   end
   def info   
-    puts "名前:#{self.name}"
-    puts "年齢:#{self.age}"
-    puts "性別:#{self.gender}"
-    puts "管理者権限:#{self.admin ? "あり" : "なし"}"
+    puts "名前:#{@name}"
+    puts "年齢:#{@age}"
+    puts "性別:#{@gender}"
+    puts "管理者権限:#{@admin ? "あり" : "なし"}"
   end
 end
   
@@ -186,16 +184,15 @@ end
 
 class UserQ18
   # 以下に回答を記載
-  attr_accessor :name, :age
   def initialize(name:, age:)
-    self.name = name
-    self.age = age
+    @name = name
+    @age = age
 
     def introduce
-      if self.age >= 11
-        puts "こんにちは，#{self.name}と申します。宜しくお願いいたします。"
+      if @age >= 11
+        return "こんにちは，#{@name}と申します。宜しくお願いいたします。"
       else
-        puts "はいさいまいど〜，#{self.name}です！！！"
+        return "はいさいまいど〜，#{@name}です！！！"
       end
     end
   end
@@ -212,13 +209,14 @@ end
 
 class Item
   # 以下を修正して下さい
-  attr_accessor :name
+
+  attr_reader :name
   def initialize(name:)
-    self.name = name
+    @name = name
   end
 
     def book
-      puts self.name
+      puts @name
     end
 end
 
@@ -230,11 +228,24 @@ end
 
 class UserQ20
   # 以下に回答を記載
-  attr_accessor :name, :age
+  attr_accessor :name, :age, :entry_fee, :infant, :children, :adult, :senior
+  def initialize(name:, entry_fee:, infant:, children:, adult:, senior:)
+    @name = name
+    @age = age
+    @entry_fee = entry_fee
+    @infant = infant
+    @children = children
+    @adult = adult
+    @senior = senior
+  end
+  def info_entry_fee
+    puts "#{@name}さんの入場料金は#{entry_fee(user)}円です。"
+  end
 end
 
 class Zoo
   # 以下に回答を記載
+ 
 
 end
 
