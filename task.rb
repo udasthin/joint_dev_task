@@ -230,7 +230,7 @@ end
 
 class UserQ20
   # 以下に回答を記載
-  attr_accessor
+  attr_accessor :name, :age
 end
 
 class Zoo
