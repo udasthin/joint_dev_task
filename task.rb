@@ -156,8 +156,23 @@ end
 
 class UserQ17
   # 以下に回答を記載
-
+  attr_accessor :name, :age, :gender, :admin
+  def initialize(name:, age:,  gender:, admin:)   
+    self.name = name
+    self.age = age
+    self.gender = gender
+    self.admin = admin
+    # self.admin ? "あり" : "なし"
+  end
+  def info   
+    puts "名前:#{self.name}"
+    puts "年齢:#{self.age}"
+    puts "性別:#{self.gender}"
+    puts "管理者権限:#{self.admin ? "あり" : "なし"}"
+  end
 end
+  
+
 
 def q17
   # ここは変更しないで下さい（ユーザー情報は変更していただいてOKです）
