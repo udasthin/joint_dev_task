@@ -160,13 +160,13 @@ class UserQ17
     @name = name
     @age = age
     @gender = gender
-    @admin = admin
+    @admin = admin ? "あり" : "なし"
   end
   def info   
     puts "名前:#{@name}"
     puts "年齢:#{@age}"
     puts "性別:#{@gender}"
-    puts "管理者権限:#{@admin ? "あり" : "なし"}"
+    puts "管理者権限:#{@admin}"
   end
 end
   
@@ -184,18 +184,14 @@ end
 
 class UserQ18
   # 以下に回答を記載
-  def initialize(name:, age:)
+  def initialize(name:,age:)
     @name = name
     @age = age
+  end
 
     def introduce
-      if @age >= 11
-        return "こんにちは，#{@name}と申します。宜しくお願いいたします。"
-      else
-        return "はいさいまいど〜，#{@name}です！！！"
-      end
+      @age > 11 ? "こんにちは，#{@name}と申します。宜しくお願いいたします。" : "はいさいまいど〜，#{@name}です！！！"      
     end
-  end
 end
 
 def q18
