@@ -185,9 +185,9 @@ end
 
 class UserQ18
   # 以下に回答を記載
-  def initialize(name:,age:)
-    @name = name
-    @age = age
+  def initialize(params)
+    @name = params[:name]
+    @age = params[:age]
   end
 
     def introduce
@@ -226,25 +226,39 @@ end
 class UserQ20
   # 以下に回答を記載
   attr_accessor :name, :age 
-  def initialize(name:, age:)
-    @name = name
-    @age = age
+  # def initialize(name:, age:)
+  #   @name = name
+  #   @age = age
+  # end
+  def initialize(**params)
+    @name = params[:name]
+    @age = params[:age]
   end
-  
 end
 
 class Zoo
   # 以下に回答を記載
   attr_accessor :name, :entry_fee
-  def initialize(name:,entry_fee:)
-    @name = name
-    @entry_fee = entry_fee
+  # def initialize(name:,entry_fee:)
+  #   @name = name
+  #   @entry_fee = entry_fee
+  # end
+  def initialize(**params)
+    @name = params[:name]
+    @entry_fee = params[:entry_fee]
   end
 
   def info_entry_fee(user)
-    puts "#{user.name}さんの入場料金は#{entry_fee[:infant]}円です。"
+    if user.age < 4
+      puts "#{user.name}さんの入場料金は#{entry_fee[:infant]}円です。"
+    elsif user.age <= 10
+      puts "#{user.name}さんの入場料金は#{entry_fee[:children]}円です。"
+    elsif user.age < 35
+      puts "#{user.name}さんの入場料金は#{entry_fee[:adult]}円です。"
+    elsif user.age > 100
+      puts "#{user.name}さんの入場料金は#{entry_fee[:senior]}円です。"
+    end
   end
-  
 end
 
 
