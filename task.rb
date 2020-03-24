@@ -160,13 +160,14 @@ class UserQ17
     @name = name
     @age = age
     @gender = gender
-    @admin = admin ? "あり" : "なし"
+    @admin = admin
   end
-  def info   
+  def info
     puts "名前:#{@name}"
     puts "年齢:#{@age}"
     puts "性別:#{@gender}"
-    puts "管理者権限:#{@admin}"
+    admin = @admin ? "有り" : "無し"
+    puts "管理者権限:#{admin}"
   end
 end
   
@@ -224,25 +225,26 @@ end
 
 class UserQ20
   # 以下に回答を記載
-  attr_accessor :name, :age, :entry_fee, :infant, :children, :adult, :senior
-  def initialize(name:, entry_fee:, infant:, children:, adult:, senior:)
+  attr_accessor :name, :age 
+  def initialize(name:, age:)
     @name = name
     @age = age
-    @entry_fee = entry_fee
-    @infant = infant
-    @children = children
-    @adult = adult
-    @senior = senior
   end
-  def info_entry_fee
-    puts "#{@name}さんの入場料金は#{entry_fee(user)}円です。"
-  end
+  
 end
 
 class Zoo
   # 以下に回答を記載
- 
+  attr_accessor :name, :entry_fee
+  def initialize(name:,entry_fee:)
+    @name = name
+    @entry_fee = entry_fee
+  end
 
+  def info_entry_fee(user)
+    puts "#{user.name}さんの入場料金は#{entry_fee[:infant]}円です。"
+  end
+  
 end
 
 
