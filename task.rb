@@ -163,11 +163,17 @@ class UserQ17
     @admin = admin
   end
   def info
-    puts "名前:#{@name}"
-    puts "年齢:#{@age}"
-    puts "性別:#{@gender}"
     admin = @admin ? "有り" : "無し"
-    puts "管理者権限:#{admin}"
+    puts <<~EOS
+    名前:#{@name}
+    年齢:#{@age}
+    性別:#{@gender}
+    管理者権限:#{admin}
+    EOS
+    # puts "名前:#{@name}"
+    # puts "年齢:#{@age}"
+    # puts "性別:#{@gender}"
+    # puts "管理者権限:#{admin}"
   end
 end
   
@@ -225,11 +231,7 @@ end
 
 class UserQ20
   # 以下に回答を記載
-  attr_accessor :name, :age 
-  # def initialize(name:, age:)
-  #   @name = name
-  #   @age = age
-  # end
+  attr_reader :name, :age 
   def initialize(**params)
     @name = params[:name]
     @age = params[:age]
@@ -238,7 +240,7 @@ end
 
 class Zoo
   # 以下に回答を記載
-  attr_accessor :name, :entry_fee
+  attr_reader :name, :entry_fee
   # def initialize(name:,entry_fee:)
   #   @name = name
   #   @entry_fee = entry_fee
@@ -249,15 +251,26 @@ class Zoo
   end
 
   def info_entry_fee(user)
-    if user.age < 4
-      puts "#{user.name}さんの入場料金は#{entry_fee[:infant]}円です。"
-    elsif user.age <= 10
-      puts "#{user.name}さんの入場料金は#{entry_fee[:children]}円です。"
-    elsif user.age < 35
-      puts "#{user.name}さんの入場料金は#{entry_fee[:adult]}円です。"
-    elsif user.age > 100
-      puts "#{user.name}さんの入場料金は#{entry_fee[:senior]}円です。"
+    admission_price = entry_fee
+    case user.age
+    when 0..3
+      puts "#{user.name}さんの入場料金は#{admission_price[:infant]}円です。"
+    when 4..11
+      puts "#{user.name}さんの入場料金は#{admission_price[:children]}円です。"
+    when 12..69
+      puts "#{user.name}さんの入場料金は#{admission_price[:adult]}円です。"
+    when 70..150
+      puts "#{user.name}さんの入場料金は#{admission_price[:senior]}円です。"
     end
+    # if user.age < 4
+    #   puts "#{user.name}さんの入場料金は#{entry_fee[:infant]}円です。"
+    # elsif user.age <= 10
+    #   puts "#{user.name}さんの入場料金は#{entry_fee[:children]}円です。"
+    # elsif user.age < 35
+    #   puts "#{user.name}さんの入場料金は#{entry_fee[:adult]}円です。"
+    # elsif user.age > 100
+    #   puts "#{user.name}さんの入場料金は#{entry_fee[:senior]}円です。"
+    # end
   end
 end
 
