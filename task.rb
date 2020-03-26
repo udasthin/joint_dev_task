@@ -252,25 +252,17 @@ class Zoo
 
   def info_entry_fee(user)
     admission_price = entry_fee
-    case user.age
-    when 0..3
-      puts "#{user.name}さんの入場料金は#{admission_price[:infant]}円です。"
-    when 4..11
-      puts "#{user.name}さんの入場料金は#{admission_price[:children]}円です。"
-    when 12..69
-      puts "#{user.name}さんの入場料金は#{admission_price[:adult]}円です。"
-    when 70..150
-      puts "#{user.name}さんの入場料金は#{admission_price[:senior]}円です。"
+    admission_price = case user.age
+    when 0..5
+     entry_fee[:infant]
+    when 6..12
+     entry_fee[:children]
+    when 13..64
+      entry_fee[:adult]
+    when 65..120
+      entry_fee[:senior]
     end
-    # if user.age < 4
-    #   puts "#{user.name}さんの入場料金は#{entry_fee[:infant]}円です。"
-    # elsif user.age <= 10
-    #   puts "#{user.name}さんの入場料金は#{entry_fee[:children]}円です。"
-    # elsif user.age < 35
-    #   puts "#{user.name}さんの入場料金は#{entry_fee[:adult]}円です。"
-    # elsif user.age > 100
-    #   puts "#{user.name}さんの入場料金は#{entry_fee[:senior]}円です。"
-    # end
+    puts "#{user.name}さんの入場料金は#{admission_price}円です。"
   end
 end
 
